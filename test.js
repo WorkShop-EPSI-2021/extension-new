@@ -20,8 +20,23 @@ document.getElementById("test").addEventListener('click', () => {
         }
         console.log(textoskour)
         console.log(textMail)
+        var email = {sender:textoskour,content:textMail,object:"C'est pas fait encore"};
+        console.log(email)
+        console.log(JSON.stringify(email))
         //wide-content-host
         //
+/*        fetch('https://cubecesi.online/v1/scan',{
+            method:'POST',
+            body: JSON.stringify(email)
+        }).then(r => r.json()).then(result => {
+            // Result now contains the response text, do what you want...
+            console.log(result)
+        })*/
+/*        axios.post('https://cubecesi.online/v1/scan', {
+            email
+        }).then(response => {
+            console.log(response.data)
+        })*/
         return document.body;
     }
 

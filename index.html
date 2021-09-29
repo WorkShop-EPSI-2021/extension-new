@@ -1,8 +1,57 @@
 <!DOCTYPE html>
-<html>
+<link href="style.css" rel="stylesheet"><html>
 <head></head>
-<body>
-<button id="test">TEST!</button>
+<body class="App container">
+    <div>
+        <div class="App-header">
+          <h2>C'MAIL</h2>
+        </div>
+        <div id="scan">
+        <div class="btn-container">
+          <div class="center">
+            <button class="btn" id="test">
+              <svg
+                width="180px"
+                height="60px"
+                viewBox="0 0 180 60"
+                class="border"
+              >
+                <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+              </svg>
+              <span>SCAN</span>
+            </button>
+          </div>
+        </div>
+        <div class="bottom">
+          <p>
+            Cliquez sur le bouton pour scanner votre mail et savoir si il est
+            fiable ou frauduleux.
+          </p>
+          <p>
+            Vous allez recevoir un score de 1 &agrave;	100 repr&eacute;sentant la fiabilit&eacute; du
+            mail et des informations pour vous &eacute;duquer.
+          </p>
+        </div>
+      </div>
+      <div id="result" class="hidden">
+        <p id="total">0</p>
+        <div id="details">
+          <button >Voir plus</button>
+
+        </div>
+      </div>
+      <div id="result-advanced" class="hidden">
+        <p id="grammar">0</p>
+        <p id="feeling">0</p>
+        <p id="tone">0</p>
+        <button id="return"> Retour</button>
+
+      </div>
+      </div>
 <script src="test.js"></script>
+<script src="jquery.min.js"></script>
 </body>
 </html>
+
+

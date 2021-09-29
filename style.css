@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
+
+.App {
+  text-align: center;
+  width: 450px;
+  height: 450px;
+  background-color: #282c34;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+
+.bottom {
+ position: absolute;
+ bottom: 5%;
+ left: 10%;
+ width: 80%;
+}
+
+.bottom p {
+  color: white;
+}
+.App-header {
+  top: 10%;
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+ body, html {
+   width: 450px;
+   height: 450px;
+   margin: 0;
+   padding: 0;
+   background: #7ae770;
+   overflow: hidden;
+   font-family: 'Scheherazade New', serif;
+  }
+ 
+ .btn-container {
+   width: 400px;
+   height: 400px;
+   position: absolute;
+   left: 50%;
+   top: 30%;
+   transform: translate(-50%, -50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .center {
+   width: 180px;
+   height: 60px;
+   position: absolute;
+ }
+ 
+ .btn {
+   width: 180px;
+   height: 60px;
+   cursor: pointer;
+   background: transparent;
+   border: 1px solid #aef1a8;
+   outline: none;
+   transition: 1s ease-in-out;
+ }
+ 
+ svg {
+   position: absolute;
+   left: 0;
+   top: 0;
+   fill: none;
+   stroke: #fff;
+   stroke-dasharray: 150 480;
+   stroke-dashoffset: 150;
+   transition: 1s ease-in-out;
+ }
+ 
+ .btn:hover {
+   transition: 1s ease-in-out;
+   background: #1d8814;
+ }
+ 
+ .btn:hover svg {
+   stroke-dashoffset: -480;
+ }
+ 
+ .btn span {
+   color: white;
+   font-size: 18px;
+   font-weight: 100;
+ }
+
+.hidden {
+  display: none;
+ }
+
+ .result {
+   position: absolute;
+   bottom: 10%;
+ }

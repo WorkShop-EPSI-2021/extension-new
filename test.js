@@ -2,56 +2,61 @@ document.getElementById("test").addEventListener('click', () => {
     console.log("Popup DOM fully loaded and parsed");
 
     function modifyDOM() {
-        //You can play with your DOM here or check URL against your regex
-        var doc = document.getElementsByTagName('p');
-        var textMail="";
-        var divchiante = document.getElementsByClassName('wide-content-host')[0].firstChild.firstChild
-        console.log(divchiante)
-        if(divchiante.childNodes.length===4){
-            var textoskour = divchiante.childNodes[2].childNodes[0].firstChild.textContent
-        }else{
-            var textoskour = divchiante.childNodes[1].childNodes[0].firstChild.textContent
-        }
-
-        for(var i =0;i<doc.length;i++){
-            if(doc[i].outerText!==undefined && doc[i].outerText!==""&&doc[i].outerText!=="\\n"&&doc[i].outerText!=="Cela prend plus de temps que d'habitude. Essayez d'actualiser la page."){
-                textMail = textMail+doc[i].outerText+" "
+        try {
+            //You can play with your DOM here or check URL against your regex
+            var doc = document.getElementsByTagName('p');
+            var textMail = "";
+            var divchiante = document.getElementsByClassName('wide-content-host')[0].firstChild.firstChild
+            console.log(divchiante)
+            if (divchiante.childNodes.length === 4) {
+                var textoskour = divchiante.childNodes[2].childNodes[0].firstChild.textContent
+            } else {
+                var textoskour = divchiante.childNodes[1].childNodes[0].firstChild.textContent
             }
+
+            for (var i = 0; i < doc.length; i++) {
+                if (doc[i].outerText !== undefined && doc[i].outerText !== "" && doc[i].outerText !== "\\n" && doc[i].outerText !== "Cela prend plus de temps que d'habitude. Essayez d'actualiser la page.") {
+                    textMail = textMail + doc[i].outerText + " "
+                }
+            }
+            var object = document.getElementById('ReadingPaneContainerId').getElementsByClassName('allowTextSelection')[0].textContent
+            console.log(textoskour)
+            console.log(textMail)
+            var email = {sender: textoskour, content: textMail, object: object};
+            console.log(email)
+            console.log(JSON.stringify(email))
+            //wide-content-host
+            //
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "sender": textoskour,
+                "content": textMail,
+                "object": object
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("https://cubecesi.online/v1/scan", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+            /*        axios.post('https://cubecesi.online/v1/scan', {
+                        email
+                    }).then(response => {
+                        console.log(response.data)
+                    })*/
+            return document.body;
+        }catch(e){
+            console.log(e)
+            return null;
         }
-        var object = document.getElementById('ReadingPaneContainerId').getElementsByClassName('allowTextSelection')[0].textContent
-        console.log(textoskour)
-        console.log(textMail)
-        var email = {sender:textoskour,content:textMail,object:object};
-        console.log(email)
-        console.log(JSON.stringify(email))
-        //wide-content-host
-        //
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-            "sender": textoskour,
-            "content": textMail,
-            "object": object
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        fetch("https://cubecesi.online/v1/scan", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-/*        axios.post('https://cubecesi.online/v1/scan', {
-            email
-        }).then(response => {
-            console.log(response.data)
-        })*/
-        return document.body;
     }
 
     //We have permission to access the activeTab, so we can call chrome.tabs.executeScript:

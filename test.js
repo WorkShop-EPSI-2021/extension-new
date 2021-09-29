@@ -18,20 +18,34 @@ document.getElementById("test").addEventListener('click', () => {
                 textMail = textMail+doc[i].outerText+" "
             }
         }
+        var object = document.getElementById('ReadingPaneContainerId').getElementsByClassName('allowTextSelection')[0].textContent
         console.log(textoskour)
         console.log(textMail)
-        var email = {sender:textoskour,content:textMail,object:"C'est pas fait encore"};
+        var email = {sender:textoskour,content:textMail,object:object};
         console.log(email)
         console.log(JSON.stringify(email))
         //wide-content-host
         //
-/*        fetch('https://cubecesi.online/v1/scan',{
-            method:'POST',
-            body: JSON.stringify(email)
-        }).then(r => r.json()).then(result => {
-            // Result now contains the response text, do what you want...
-            console.log(result)
-        })*/
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "sender": textoskour,
+            "content": textMail,
+            "object": object
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://cubecesi.online/v1/scan", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 /*        axios.post('https://cubecesi.online/v1/scan', {
             email
         }).then(response => {

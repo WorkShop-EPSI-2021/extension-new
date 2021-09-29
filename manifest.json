@@ -1,12 +1,31 @@
 {
   "manifest_version": 2,
-  "name": "Test Extension",
-  "version": "0.0",
-
-
+  "name": "C'mail",
+  "description" : "Permet de scanner un mail sur votre navigateur pour donner un Score de fiabilité.",
+  "version": "1",
   "browser_action": {
-    "default_title": "Test",
-    "default_popup": "index.html"
+    "default_title": "C'mail",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y",
+        "chromeos": "Ctrl+Shift+U",
+        "linux": "Ctrl+Shift+J"
+      }
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "128": "images/icon128.png"
   },
   "permissions": [
     "activeTab",

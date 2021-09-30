@@ -62,7 +62,7 @@
             .then((response) => response.json())
             .then((result) => {
                 console.log(result)
-                window.open(`https://cubecesi.online/v1/return?id=${result.body}`, '_blank');
+                window.open(`https://tanjobi.fr/result/${result.body}`, '_blank');
             })
             .catch((error) => console.log("error", error));
 

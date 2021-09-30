@@ -66,7 +66,6 @@
             })
             .catch((error) => console.log("error", error));
 
-        //hide SCAN div => show RESULT div
     } catch (e) {
         console.log(e);
         return "Test";

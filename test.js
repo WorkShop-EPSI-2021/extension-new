@@ -12,7 +12,7 @@ chrome.tabs.executeScript(null,{
       
     }
   );
-  document.getElementById("result").classList.remove("hidden");
+  document.getElementById("loader").classList.remove("hidden");
   document.getElementById("scan").classList.add("hidden");
 });
 
